@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<form th:action="@{/to/toupdate}" method="post" th:object="${Employee}">
+    <input type="hidden" name="empId" th:value="*{empId}">
+    <table>
+        <tr>
+            <th colspan="2">修改用户信息</th>
+        </tr>
+        <tr>
+<!--            <td th:text="${Employee.empName}"></td>-->
+            <td>员工姓名</td>
+            <td>
+                <input type="text" name="empName" th:value="*{empName}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td>
+                <input type="text" name="age" th:value="*{age}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <input type="text" name="gender" th:value="*{gender}"/>
+            </td>
+        </tr>
+        <td>邮箱</td>
+        <td>
+            <input type="text" name="email" th:value="*{email}"/>
+        </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="修改用户">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

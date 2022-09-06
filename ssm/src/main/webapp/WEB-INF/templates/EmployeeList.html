@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工列表</title>
+    <link rel="stylesheet" th:href="@{/static/css/index_work.css}">
+</head>
+<body>
+<table>
+    <tr >
+        <th colspan="6">员工列表</th>
+    </tr>
+    <tr>
+        <th>流水号</th>
+        <th>员工姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>操作（<a th:href="@{/to/add}">添加</a>）</th>
+    </tr>
+    <tr th:each="Employee,status:${page.list}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${Employee.empName}"></td>
+        <td th:text="${Employee.age}"></td>
+        <td th:text="${Employee.gender}"></td>
+        <td th:text="${Employee.email}"></td>
+        <td>
+            <a th:href="@{'/to/delete/'+${Employee.empId}}">删除</a>
+            <a th:href="@{'/to/update/'+${Employee.empId}}">修改</a>
+        </td>
+    </tr>
+</table>
+<div style="text-align: center">
+    <a th:if="#{page.hasPreviousPage}" th:href="@{/get/all/page/1}">首页</a>
+    <a th:if="#{page.isFirstPage}" th:href="@{'/get/all/page/'+${page.prePage}}">上一页</a>
+    <a th:if="${page.hasNextPage}" th:href="@{'/get/all/page/'+${page.nextPage}}">下一页</a>
+    <a th:if="${page.hasNextPage}" th:href="@{'/get/all/page/'+${page.pages}}">末页</a>
+</div>
+</body>
+</html>
